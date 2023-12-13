@@ -8,9 +8,9 @@
     "dev": "ts-node src/sandbox.ts",
     "generate:theme": "ts-node scripts/generateThemeTypes.ts",
     "prepare": "husky install",
-    "test": "jest",
-    "test:ci": "jest --ci --coverage=false",
-    "test:watch": "jest --watch"
+    "test": "TZ=UTC jest",
+    "test:ci": "TZ=UTC jest --ci --coverage=false",
+    "test:watch": "TZ=UTC jest --watch"
   },
   "files": [
     "dist"

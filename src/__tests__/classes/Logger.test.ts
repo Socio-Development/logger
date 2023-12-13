@@ -40,7 +40,7 @@ describe('Logger', () => {
 
       logger.add('test')
 
-      expect(logger.formattedEntries).toEqual(['17:46:28 test'])
+      expect(logger.formattedEntries).toEqual(['16:46:28 test'])
 
       global.Date = OriginalDate
     })
@@ -60,7 +60,7 @@ describe('Logger', () => {
 
       logger.add('test')
 
-      expect(logger['_formatEntry'](logger.entries[0])).toEqual('17:46:28 test')
+      expect(logger['_formatEntry'](logger.entries[0])).toEqual('16:46:28 test')
     })
 
     it('should correctly apply indentation', () => {
@@ -70,11 +70,11 @@ describe('Logger', () => {
       logger.add('test')
       logger.groupEnd('test')
 
-      expect(logger['_formatEntry'](logger.entries[0])).toEqual('17:46:28 test')
+      expect(logger['_formatEntry'](logger.entries[0])).toEqual('16:46:28 test')
       expect(logger['_formatEntry'](logger.entries[1])).toEqual(
-        '17:46:28   test',
+        '16:46:28   test',
       )
-      expect(logger['_formatEntry'](logger.entries[2])).toEqual('17:46:28 test')
+      expect(logger['_formatEntry'](logger.entries[2])).toEqual('16:46:28 test')
     })
 
     it('should be able to handle a prefix', () => {
@@ -83,7 +83,7 @@ describe('Logger', () => {
       logger.add('test')
 
       expect(logger['_formatEntry'](logger.entries[0])).toEqual(
-        '17:46:28 [TEST] test',
+        '16:46:28 [TEST] test',
       )
     })
 
@@ -93,7 +93,7 @@ describe('Logger', () => {
       logger.info('test')
 
       expect(logger['_formatEntry'](logger.entries[0])).toEqual(
-        '\x1b[34m17:46:28 test\x1b[0m',
+        '\x1b[34m16:46:28 test\x1b[0m',
       )
     })
   })
@@ -195,7 +195,7 @@ describe('Logger', () => {
 
       logger.print()
 
-      expect(spy).toHaveBeenCalledWith('17:46:28 test')
+      expect(spy).toHaveBeenCalledWith('16:46:28 test')
 
       global.Date = OriginalDate
     })
