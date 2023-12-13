@@ -1,10 +1,10 @@
 {
   "name": "@socio-development/logger",
-  "version": "0.1.0-pre-alpha",
+  "version": "0.1.0-alpha.0",
   "description": "A logging utility for managing and displaying logs in a structured manner.",
-  "author": "CasperSocio",
+  "author": "CasperSocio (https://github.com/CasperSocio)",
   "scripts": {
-    "build": "npm run generate:theme && tsc",
+    "build": "rm -rf dist && npm run generate:theme && tsc",
     "dev": "ts-node src/sandbox.ts",
     "generate:theme": "ts-node scripts/generateThemeTypes.ts",
     "prepare": "husky install",
@@ -15,14 +15,12 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    }
-  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Socio-Development/logger.git"
@@ -32,8 +30,7 @@
     "url": "https://github.com/Socio-Development/logger/issues"
   },
   "keywords": [
-    "logger",
-    "node"
+    "logger"
   ],
   "license": "MIT",
   "devDependencies": {
