@@ -4,6 +4,7 @@ import {
   LoggerData,
   LoggerOptions,
 } from 'src/types'
+import { ThemeName } from '../_generated/theme'
 import LogEntry from './LogEntry'
 
 const defaultOptions: LoggerConfig = {
@@ -48,23 +49,34 @@ export default class Logger {
   private _separator: string
   private _timestampFormat: string
 
-  constructor(options: Partial<LoggerOptions> = {}) {
-    if (options.indentSize && options.indentSize < 1) {
+  constructor(theme?: ThemeName)
+  constructor(options?: LoggerOptions)
+  constructor(optionsOrTheme: LoggerOptions | ThemeName = {}) {
+    let config: LoggerOptions
+
+    if (typeof optionsOrTheme === 'string') {
+      const theme = require(`../themes/${optionsOrTheme}`).default
+      config = theme
+    } else {
+      config = optionsOrTheme
+    }
+
+    if (config.indentSize && config.indentSize < 1) {
       throw new Error('Indent size must be greater than 0')
     }
 
     this._currentIndent = 0
-    this._indentSize = options.indentSize || defaultOptions.indentSize
+    this._indentSize = config.indentSize || defaultOptions.indentSize
     this._entries = []
-    this._prefix = options.prefix
-    this._separator = options.separator || defaultOptions.separator
+    this._prefix = config.prefix
+    this._separator = config.separator || defaultOptions.separator
     this._timestampFormat =
-      options.timestampFormat || defaultOptions.timestampFormat
+      config.timestampFormat || defaultOptions.timestampFormat
 
-    if (options.composition) {
+    if (config.composition) {
       this._composition = {
         ...defaultOptions.composition,
-        ...options.composition,
+        ...config.composition,
       }
     } else {
       this._composition = defaultOptions.composition

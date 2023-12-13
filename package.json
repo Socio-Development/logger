@@ -4,8 +4,9 @@
   "description": "A logging utility for managing and displaying logs in a structured manner.",
   "author": "CasperSocio",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run generate:theme && tsc",
     "dev": "ts-node src/sandbox.ts",
+    "generate:theme": "ts-node scripts/generateThemeTypes.ts",
     "prepare": "husky install",
     "test": "jest",
     "test:ci": "jest --ci --coverage=false",
@@ -36,6 +37,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@socio-development/generator": "^0.1.0-alpha.3",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.4",
     "husky": "^8.0.3",

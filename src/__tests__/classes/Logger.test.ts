@@ -10,6 +10,12 @@ describe('Logger', () => {
 
       expect(logger).toBeInstanceOf(Logger)
     })
+
+    it('should create a new logger with a theme', () => {
+      const logger = new Logger('socio')
+
+      expect(logger).toBeInstanceOf(Logger)
+    })
   })
 
   describe('.entries', () => {
