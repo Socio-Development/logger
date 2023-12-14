@@ -38,7 +38,8 @@ log.groupEnd('Process: END')
 log.print()
 ```
 
-> [Insert screenshot here]
+<img width="420" alt="logger-output" src="https://github.com/Socio-Development/logger/assets/74550679/b54a1756-df17-425c-9c27-68d7bc584c4a">
+
 
 The `Logger` class is a custom logging utility that provides methods for logging messages with different severity levels and grouping them for better readability.
 
@@ -79,6 +80,14 @@ The `groupEnd` method decreases the current indentation level and logs the provi
 # Options
 
 You can change the logger output by providing options to the logger.
+
+```ts
+import { Logger } from '@socio-development/logger'
+
+const log = new Logger({
+  // Add your options here
+})
+```
 
 ## Composition
 
