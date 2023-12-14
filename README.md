@@ -18,3 +18,131 @@ This repository contains the Logger class, a utility for managing and displaying
 ## Getting started
 
 Run `npm i -D @socio-development/logger`
+
+### Example
+
+```ts
+import { Logger } from '@socio-development/logger'
+
+const log = new Logger()
+
+log.group('Process: START')
+log.add('This is my default log')
+log.info('This is my info log')
+log.add('This is my default log')
+log.warn('This is my warn log')
+log.add('This is my default log')
+log.error('This is my error log')
+log.groupEnd('Process: END')
+
+log.print()
+```
+
+> [Insert screenshot here]
+
+The `Logger` class is a custom logging utility that provides methods for logging messages with different severity levels and grouping them for better readability.
+
+The script begins by creating a new instance of the `Logger` class:
+
+```ts
+const log = new Logger()
+```
+
+Next, it uses the `group` method to start a new group of log entries:
+
+```ts
+log.group('Process: START')
+```
+
+The `group` method logs the provided message and increases the current indentation level. This means that all log entries added after this point will be indented until the group is ended.
+
+The script then uses the `add`, `info`, `warn`, and `error` methods to log messages with different severity levels:
+
+```ts
+log.add('This is my default log')
+log.info('This is my info log')
+log.warn('This is my warn log')
+log.error('This is my error log')
+```
+
+Each of these methods creates a new `LogEntry` with the provided message, the current indentation level, and the appropriate severity level, and adds it to the list of log entries.
+
+Finally, the script uses the `groupEnd` method to end the current group of log entries and the `print` method to print all log entries to the console:
+
+```ts
+log.groupEnd('Process: END')
+log.print()
+```
+
+The `groupEnd` method decreases the current indentation level and logs the provided message, if any. The `print` method formats all log entries according to the logger's configuration and prints them to the console, separated by newline characters.
+
+# Options
+
+You can change the logger output by providing options to the logger.
+
+## Composition
+
+**Name** `.composition`
+
+**Default**
+```ts
+LoggerOptions.composition.default = [
+  'timestamp',
+  'prefix',
+  'indent',
+  'message'
+]
+
+LoggerOptions.composition.error = [
+  'color:red',
+  'timestamp',
+  'prefix',
+  'indent',
+  'message',
+  'color:reset',
+]
+
+LoggerOptions.composition.info = [
+  'color:blue',
+  'timestamp',
+  'prefix',
+  'indent',
+  'message',
+  'color:reset',
+]
+
+LoggerOptions.composition.warn = [
+  'color:yellow',
+  'timestamp',
+  'prefix',
+  'indent',
+  'message',
+  'color:reset',
+]
+```
+
+The composition option allows you to modify the logger output for each severity level.
+
+## Indent size
+
+**Name** `.indentSize`
+
+**Default** `2`
+
+## Prefix
+
+**Name** `.prefix`
+
+**Default** `undefined`
+
+## Separator
+
+**Name** `.separator`
+
+**Default** `' '`
+
+## Timestamp format
+
+**Name** `.timestampFormat`
+
+**Default** `'HH:mm:ss'`

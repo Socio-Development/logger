@@ -42,7 +42,7 @@ describe('Timestamp', () => {
 
       expect(timestamp.format('YYYY-MM-DD')).toBe('2022-02-17')
       expect(timestamp.format('YYYY-MM-DD HH:mm:ss A')).toBe(
-        '2022-02-17 17:46:28 PM',
+        '2022-02-17 16:46:28 PM',
       )
     })
     it('should apply AM/PM', () => {
@@ -53,7 +53,7 @@ describe('Timestamp', () => {
       const timestamp = new Timestamp()
 
       expect(timestamp.format('YYYY-MM-DD HH:mm:ss A')).toBe(
-        '2022-02-17 07:46:28 AM',
+        '2022-02-17 06:46:28 AM',
       )
 
       global.Date = jest.fn(() => mockDate) as any

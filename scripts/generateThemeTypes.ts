@@ -21,8 +21,6 @@ export type ThemeName = (typeof themeNames)[number]
 
 `
 
-console.log(code)
-
 generate({
   code,
   file: 'theme.ts',
