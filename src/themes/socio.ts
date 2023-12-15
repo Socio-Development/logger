@@ -17,6 +17,7 @@ export default {
       'color:red',
       'indent',
       'message',
+      'color:reset',
     ],
     info: [
       'timestamp',
@@ -25,6 +26,7 @@ export default {
       'color:blue',
       'indent',
       'message',
+      'color:reset',
     ],
     warn: [
       'timestamp',
@@ -33,6 +35,7 @@ export default {
       'color:yellow',
       'indent',
       'message',
+      'color:reset',
     ],
   },
   indentSize: 2,
